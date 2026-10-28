@@ -1,0 +1,62 @@
+.compte-badge { position: relative; display: inline-block; }
+.compte-punaise {
+  position: absolute;
+  z-index: 2;
+  left: 9px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff8e8 0 12%, var(--or) 22% 68%, #7d5f2a 100%);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .6);
+  pointer-events: none;
+}
+.compte-cordon {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  top: 50%;
+  width: 2px;
+  height: 3.1rem;
+  background: repeating-linear-gradient(#d8c7a2 0 3px, #9c8762 3px 5px);
+  transform-origin: 50% 0;
+  animation: compte-balance 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.compte-medaille {
+  position: absolute;
+  z-index: 1;
+  left: calc(15px - 1.65rem);
+  top: calc(50% + 3rem);
+  display: grid;
+  place-items: center;
+  width: 3.3rem;
+  height: 3.3rem;
+  font-family: var(--titre);
+  font-size: 1.7rem;
+  color: var(--blanc-gel);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  border-radius: 50%;
+  border: 3px solid var(--or);
+  background:
+    repeating-conic-gradient(from var(--motif, 0deg), rgba(255, 255, 255, .12) 0 15deg, transparent 15deg 30deg),
+    radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--teinte, var(--rouge)) 70%, #fff), var(--teinte, var(--rouge)) 60%, color-mix(in srgb, var(--teinte, var(--rouge)) 60%, #000));
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .25), 0 8px 14px -4px rgba(0, 0, 0, .7);
+  transform-origin: 50% calc(-3rem);
+  animation: compte-balance 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.compte-medaille::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--or);
+}
+@keyframes compte-balance { 0%, 100% { rotate: -4deg; } 50% { rotate: 4deg; } }
+@media (prefers-reduced-motion: reduce) { .compte-cordon, .compte-medaille { animation: none; } }

@@ -1,0 +1,93 @@
+:root {
+  --carte-rouge: #d9482f;
+  --carte-jaune: #e8b730;
+  --carte-vert: #4f9a62;
+  --carte-bleu: #3a63b8;
+}
+
+body.partie { height: 100dvh; overflow: hidden; background: var(--ardoise-sombre); }
+.partie-quitter {
+  position: fixed; z-index: 25; top: calc(.6rem + env(safe-area-inset-top, 0px)); right: calc(.8rem + env(safe-area-inset-right, 0px));
+}
+.partie-quitter summary { list-style: none; cursor: pointer; }
+.partie-quitter summary::-webkit-details-marker { display: none; }
+.partie-quitter-confirmation { position: absolute; top: calc(100% + .5rem); right: 0; display: grid; gap: .5rem; width: max-content; padding: .8rem 1rem; --incl: -.6deg; }
+.partie-quitter-confirmation p { margin: 0; font-family: var(--manuscrit); font-size: 1.3rem; }
+#scene { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100dvh; display: block; touch-action: none; }
+
+.partie-hud {
+  position: fixed; inset: calc(.6rem + env(safe-area-inset-top, 0px)) 0 0 0; z-index: 5; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; gap: var(--espace-1);
+  padding: var(--espace-1) var(--espace-1) calc(var(--espace-1) + env(safe-area-inset-bottom, 0px));
+}
+.partie-hud > *, .partie-actions > * { pointer-events: auto; }
+
+.partie-bandeau {
+  position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .3rem .8rem;
+  max-width: 100%; padding: .3rem 1.2rem; font-family: var(--manuscrit); font-size: 1.4rem;
+  background: var(--papier-clair) var(--bruit); box-shadow: var(--ombre-feuille); transform: rotate(-.5deg);
+}
+.partie-bandeau::before {
+  content: ''; position: absolute; top: -10px; left: 14%; width: 4.5rem; height: 1.2rem;
+  background: repeating-linear-gradient(115deg, rgba(240, 168, 184, .88) 0 8px, rgba(255, 255, 255, .5) 8 11px); transform: rotate(-3deg);
+}
+.partie-tour { font-family: var(--titre); font-size: 1.7rem; font-weight: 400; }
+.partie-penalite { color: var(--alerte); background: rgba(217, 72, 47, .18); }
+.partie-couleur {
+  padding: .02rem .9rem; font-family: var(--manuscrit); font-size: 1.2rem; font-weight: 700; color: var(--blanc-gel);
+  text-transform: capitalize; background: var(--crayon); border-radius: var(--trait-main);
+}
+.partie-couleur--rouge { background: var(--carte-rouge); }
+.partie-couleur--jaune { background: var(--carte-jaune); color: var(--encre); }
+.partie-couleur--vert { background: var(--carte-vert); }
+.partie-couleur--bleu { background: var(--carte-bleu); }
+
+.partie-joueurs { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.partie-joueur {
+  position: relative; display: flex; align-items: baseline; gap: .5rem; padding: .2rem .9rem .25rem; font-family: var(--manuscrit);
+  font-size: 1.3rem; font-weight: 700; color: var(--blanc-gel); background: var(--papier) var(--bruit); border-radius: 2px 5px 3px 4px;
+  outline: 1px dashed rgba(217, 182, 108, .45); outline-offset: -5px; box-shadow: 0 6px 14px -6px rgba(0, 0, 0, .8);
+  transform: rotate(var(--incl, -.8deg));
+}
+.partie-joueur:nth-child(even) { --incl: .9deg; }
+.partie-joueur .pastille { padding: 0; font-size: 1.05rem; color: var(--or); background: none; outline: none; letter-spacing: 0; }
+.partie-joueur .pastille::before { content: '·'; margin-right: .45rem; color: var(--crayon); }
+.partie-joueur--courant { --incl: 0deg; color: var(--or); outline-color: var(--or); outline-style: solid; translate: 0 3px; box-shadow: 0 10px 20px -6px rgba(0, 0, 0, .9); }
+.partie-uno { color: var(--rouge); font-family: var(--titre); font-weight: 400; }
+.partie-signaler { padding: 0 .6rem; font-size: 1.05rem; box-shadow: 2px 2px 0 rgba(0, 0, 0, .8); }
+
+.partie-message { margin: 0; padding: .1rem .9rem; font-family: var(--manuscrit); font-size: 1.35rem; font-weight: 700; text-align: center; color: var(--alerte); background: var(--papier-clair); box-shadow: var(--ombre-feuille); }
+
+.partie-actions { display: flex; gap: var(--espace-1); margin-top: auto; align-self: flex-end; pointer-events: none; padding-bottom: 2.5rem; }
+.partie-uno-bouton { width: 6.4rem; height: 6.4rem; padding: 0; font-family: var(--titre); font-size: 2.1rem; font-weight: 400; border-radius: 50%; transform: rotate(-8deg); }
+.partie-uno-bouton:hover { transform: rotate(-4deg) scale(1.06); }
+.partie-actions .button { min-height: 2.75rem; }
+
+.partie-voile { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: var(--espace-2); background: rgba(20, 23, 26, .72); }
+.partie-voile[hidden] { display: none; }
+.partie-bandeau:empty { display: none; }
+.partie-selecteur { --incl: -1deg; display: flex; flex-direction: column; align-items: center; gap: var(--espace-2); max-width: 24rem; text-align: center; }
+.partie-selecteur-titre { margin: 0; font-size: 2rem; }
+.partie-selecteur-choix { justify-content: center; }
+.partie-choix-couleur { min-width: 5.2rem; min-height: 3rem; color: var(--blanc-gel); text-transform: capitalize; }
+.partie-choix-couleur.partie-couleur--jaune { color: var(--encre); }
+
+@media (max-width: 600px) {
+  .partie-joueur { font-size: 1rem; gap: .3rem; padding: .1rem .55rem .15rem; }
+  .partie-joueur .pastille { font-size: .9rem; }
+  .partie-joueurs { gap: .35rem; flex-wrap: nowrap; }
+  .partie-bandeau { font-size: 1.2rem; }
+  .partie-tour { font-size: 1.4rem; }
+  .partie-actions { padding-bottom: 1.2rem; }
+  .partie-hud { top: 5.6rem; }
+  .partie-uno-bouton { width: 5.2rem; height: 5.2rem; font-size: 1.7rem; }
+  body.partie .header { gap: .2rem .5rem; }
+}
+
+body.partie [hidden] { display: none !important; }
+.lecteur-ecran { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.partie-bandeau { padding: .1rem .8rem; gap: .5rem; font-size: 1.15rem; }
+.partie-sens { font-size: 1.5rem; line-height: 1; }
+.partie-choix-pioche { position: fixed; left: 50%; top: 86%; z-index: 20; display: flex; gap: var(--espace-1); transform: translateX(-50%); }
+.partie-bandeau--muet { padding: 0; background: none; box-shadow: none; }
+.partie-bandeau--muet::before { display: none; }

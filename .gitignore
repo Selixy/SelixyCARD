@@ -1,0 +1,7 @@
+target/
+ui/wasm/
+node_modules/
+.env
+*.env
+.claude/
+CLAUDE.md

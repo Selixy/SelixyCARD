@@ -1,0 +1,55 @@
+main h1 { margin: 1.2rem 0 .1rem; }
+.creation { --incl: -.7deg; display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--espace-2); max-width: 34rem; margin: 1.6rem 0 2.4rem; padding: 1.2rem 1.4rem; }
+.creation-champ { flex: 1 1 14rem; margin: 0; }
+.invite-connexion { --incl: -.7deg; display: flex; flex-wrap: wrap; align-items: center; gap: var(--espace-2); max-width: 34rem; margin: 1.6rem 0 2.4rem; padding: 1.2rem 1.4rem; font-family: var(--manuscrit); font-size: 1.35rem; }
+
+#sets { --grille-min: 15rem; padding-top: .6rem; }
+.set-carte { display: flex; flex-direction: column; gap: .3rem; padding: 1.4rem 1.2rem 1.1rem; background-color: var(--papier-clair); background-image: var(--bruit); border-radius: 3px 12px 3px 3px; outline: 1px dashed rgba(217, 182, 108, .4); outline-offset: -6px; }
+.set-carte::before { top: -.9rem; left: 1.2rem; width: 5.5rem; height: 1.2rem; margin: 0; background: var(--kraft); box-shadow: none; border-radius: 8px 8px 0 0; transform: none; }
+.set-carte:nth-child(3n + 2) { --incl: .8deg; }
+.set-carte:nth-child(3n) { --incl: -1deg; }
+.set-nom { margin: 0; font-size: 1.7rem; }
+.set-nom + .hint { margin: 0; color: var(--encre); }
+.set-carte .button { font-size: 1.25rem; }
+
+.groupe { margin-top: 2.2rem; }
+.groupe-titre { margin: 0 0 .9rem; font-family: var(--titre); font-size: 1.8rem; font-weight: 400; }
+.groupe-titre .hint { display: inline; margin-left: .5rem; font-size: 1.25rem; }
+.grille-cartes { --grille-min: 5.8rem; gap: 1.1rem .9rem; }
+
+.vignette {
+  position: relative;
+  display: block;
+  padding: .45rem .45rem 1.3rem;
+  line-height: 0;
+  text-decoration: none;
+  background: var(--papier-clair) var(--bruit);
+  border-radius: 2px;
+  box-shadow: var(--ombre-feuille);
+  transform: rotate(var(--incl, 0deg));
+  transition: transform .2s ease;
+}
+
+.vignette::before, .vignette::after { display: none; }
+.vignette:nth-child(4n + 1) { --incl: -1.6deg; }
+.vignette:nth-child(4n + 2) { --incl: 1.1deg; }
+.vignette:nth-child(4n + 3) { --incl: -.5deg; }
+.vignette:nth-child(4n) { --incl: 1.8deg; }
+.vignette:hover { transform: rotate(0) translateY(-5px) scale(1.04); z-index: 3; }
+.vignette-canvas { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; }
+.vignette-badge { position: absolute; right: .3rem; bottom: .15rem; font-size: 1rem; line-height: 1.2; background: rgba(79, 154, 98, .5); }
+
+@media (max-width: 30rem) {
+  #vue-liste > h1 { font-size: 2.1rem; }
+  .creation { padding: 1rem; }
+  .creation-champ { flex: 1 1 100%; }
+  .creation .button { width: 100%; }
+  .grille-cartes { --grille-min: 4.3rem; gap: .8rem .55rem; }
+  .vignette-badge { display: none; }
+}
+.set-carte .pastille { align-self: flex-start; padding: 0; font-family: var(--manuscrit); font-size: 1.1rem; color: var(--or); background: none; outline: none; letter-spacing: 0; }
+.set-carte .button--danger { margin-left: auto; padding-inline: .3rem; font-size: 1.05rem; color: var(--crayon); text-decoration: none; }
+.set-carte .button--danger:hover { color: var(--alerte); }
+#vue-liste > h1, #vue-liste > h1 + .hint { display: inline-block; padding: 0 .7rem; background: rgba(30, 24, 19, .82); box-shadow: 0 3px 8px rgba(0, 0, 0, .5); }
+#vue-liste > h1 { transform: rotate(-.8deg); }
+#vue-liste > h1 + .hint { display: table; margin-top: .4rem; }

@@ -1,0 +1,164 @@
+@import 'polices.css';
+@import 'transitions.css';
+
+:root {
+  --ardoise: #2b3137;
+  --ardoise-sombre: #1d2125;
+  --craie: #ece9e1;
+  --craie-pale: #a9b0b4;
+  --alerte-craie: #ff9478;
+  --papier: #2b2826;
+  --papier-clair: #34302d;
+  --encre: #efe6d2;
+  --crayon: #b4ad9d;
+  --crayon-clair: #6f7882;
+  --rouge: #d9482f;
+  --or: #d9b66c;
+  --blanc-gel: #fff8e8;
+  --jaune: #e8b730;
+  --vert: #4f9a62;
+  --bleu: #86a8f0;
+  --rose: #f0a8b8;
+  --menthe: #a9d8c4;
+  --kraft: #7a5c3c;
+  --alerte: #ff9478;
+  --manuscrit: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+  --titre: 'Caveat Brush', 'Caveat', cursive;
+  --texte: 'Lora', Georgia, 'Times New Roman', serif;
+  --bruit: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .9 0 0 0 0 .86 0 0 0 0 .8 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --ombre-feuille: 0 1px 1px rgba(0, 0, 0, .6), 0 8px 16px -6px rgba(0, 0, 0, .7), 0 22px 36px -16px rgba(0, 0, 0, .8);
+  --trait-main: 255px 14px 225px 14px / 14px 225px 14px 255px;
+  --largeur-contenu: 62rem;
+  --espace-1: .5rem;
+  --espace-2: 1rem;
+  --espace-3: 1.6rem;
+  --espace-4: 2.6rem;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--ardoise); }
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-family: var(--texte);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--craie);
+  background-color: var(--ardoise);
+  background-image: url('/images/fonds/fond-accueil.webp?v=4');
+  background-position: center center;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body[data-decor="cartes"] { background-image: url('/images/fonds/fond-cartes.webp?v=4'); }
+body[data-decor="editeur"] { background-image: url('/images/fonds/fond-editeur.webp?v=4'); }
+body[data-decor="salon"] { background-image: url('/images/fonds/fond-salon.webp?v=4'); }
+body[data-decor="compte"] { background-image: url('/images/fonds/fond-compte.webp?v=4'); }
+
+@media (max-width: 700px) {
+  body { background-image: url('/images/fonds/fond-accueil-mobile.webp?v=4'); }
+  body[data-decor="cartes"] { background-image: url('/images/fonds/fond-cartes-mobile.webp?v=4'); }
+  body[data-decor="editeur"] { background-image: url('/images/fonds/fond-editeur-mobile.webp?v=4'); }
+  body[data-decor="salon"] { background-image: url('/images/fonds/fond-salon-mobile.webp?v=4'); }
+  body[data-decor="compte"] { background-image: url('/images/fonds/fond-compte-mobile.webp?v=4'); }
+}
+
+#decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s ease-out;
+}
+
+body.decor-actif #decor { opacity: 1; }
+
+.decor-chargement {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem 1.1rem;
+  background: rgba(33, 37, 41, .88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px dashed rgba(217, 182, 108, .45);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .45);
+  color: var(--craie-pale);
+  font-family: var(--manuscrit);
+  font-size: 1.15rem;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.decor-chargement-craie {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--or);
+  box-shadow: 0 0 8px var(--or);
+  animation: pulsation-craie 1.4s ease-in-out infinite;
+}
+
+@keyframes pulsation-craie {
+  0%, 100% { opacity: .35; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+body.decor-actif .decor-chargement,
+body.decor-absent .decor-chargement {
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+}
+
+[hidden] { display: none !important; }
+
+h1, h2, h3 { margin: 0; font-family: var(--titre); font-weight: 400; line-height: 1.1; color: inherit; }
+h1 { font-size: 2.6rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.35rem; }
+p { margin: 0 0 var(--espace-1); }
+a { color: #9cbcff; }
+
+::selection { background: var(--jaune); color: #1d2125; }
+
+.visuellement-cache { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+
+main {
+  position: relative;
+  z-index: 2;
+  max-width: var(--largeur-contenu);
+  margin: 0 auto;
+  padding: var(--espace-3) max(var(--espace-2), env(safe-area-inset-right)) max(var(--espace-4), env(safe-area-inset-bottom)) max(var(--espace-2), env(safe-area-inset-left));
+}
+
+.pile { display: flex; flex-direction: column; gap: var(--espace-1); }
+.rangee { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espace-1); }
+.grille { display: grid; gap: var(--espace-3); grid-template-columns: repeat(auto-fill, minmax(var(--grille-min, 12rem), 1fr)); }
+
+.hint { margin: 0 0 var(--espace-1); font-family: var(--manuscrit); font-size: 1.3rem; line-height: 1.2; color: var(--craie-pale); }
+.hint a { color: var(--alerte-craie); text-decoration: underline wavy; text-underline-offset: 3px; }
+.error { margin: 0 0 var(--espace-2); font-family: var(--manuscrit); font-size: 1.35rem; color: var(--alerte-craie); }
+.error:empty { display: none; }
+.vide { padding: var(--espace-4) var(--espace-2); text-align: center; font-family: var(--manuscrit); font-size: 1.5rem; color: var(--craie-pale); }
+
+.decor-absent { background: radial-gradient(ellipse at 50% 38%, var(--ardoise) 35%, var(--ardoise-sombre) 100%) fixed; }

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mes cartes · SelixyCARD</title>
+  <link rel="preload" href="/images/fonds/fond-cartes.webp?v=4" as="image" type="image/webp" fetchpriority="high">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: #1a1e22;
+      background-image: url('/images/fonds/fond-cartes.webp?v=4');
+      background-position: center center;
+      background-size: auto 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 700px) {
+      body { background-image: url('/images/fonds/fond-cartes-mobile.webp?v=4'); }
+    }
+  </style>
+  <link rel="preload" href="/polices/caveat-brush-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Caveat+Brush&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="../css/atelier/jetons.css">
+  <link rel="stylesheet" href="../css/atelier/transitions.css">
+  <link rel="stylesheet" href="../css/atelier/papier.css">
+  <link rel="stylesheet" href="../css/atelier/formulaires.css">
+  <link rel="stylesheet" href="../css/atelier/entete.css">
+  <link rel="stylesheet" href="../css/atelier/sombre.css">
+  <link rel="stylesheet" href="../css/cartes.css">
+  <link rel="preload" href="/wasm/moteur_bg.wasm?v=glow3" as="fetch" type="application/wasm" crossorigin>
+</head>
+<body data-decor="cartes">
+  <canvas id="decor" aria-hidden="true"></canvas>
+  <header class="header">
+    <a class="tab" href="/">Accueil</a>
+  </header>
+  <main>
+    <p class="error" id="erreur" role="alert"></p>
+    <section id="vue-liste">
+      <h1>Mes cartes</h1>
+      <p class="hint">Vos sets de cartes personnalisés.</p>
+      <p class="feuille invite-connexion" id="invite-connexion" hidden>Connectez-vous pour créer et retrouver vos sets de cartes. <a class="button button--primary" href="/compte/">Se connecter</a></p>
+      <form class="creation feuille feuille--jaune" id="creer-set">
+        <div class="field creation-champ">
+          <label for="nom-set">Nouveau set</label>
+          <input id="nom-set" maxlength="60" placeholder="Nom du set" autocomplete="off">
+        </div>
+        <button class="button button--primary" type="submit">Créer</button>
+      </form>
+      <div class="grille" id="sets"></div>
+    </section>
+    <section id="vue-set" hidden>
+      <a class="button button--discret" href="#">← Tous les sets</a>
+      <h1 id="set-titre"></h1>
+      <p class="hint" id="set-info"></p>
+      <div id="cartes"></div>
+    </section>
+  </main>
+  <script type="module" src="../js/cartes/index.js"></script>
+  <script type="module" src="../js/decor/page.js"></script>
+</body>
+</html>

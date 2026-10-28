@@ -1,0 +1,46 @@
+.salon-accueil { --incl: -.7deg; max-width: 27rem; margin: 2.6rem auto 1rem; padding: 2rem 1.8rem 1.6rem; }
+.salon-accueil h1 { margin-bottom: .4rem; font-size: 2.3rem; }
+.salon-accueil .button { align-self: flex-start; }
+.salon { display: grid; gap: 2.4rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); align-items: start; margin-top: 2rem; }
+.salon h1 { font-size: 2.2rem; }
+.salon-titre { margin: var(--espace-1) 0 0; font-size: 1.6rem; }
+.salon-code { display: inline-block; padding: 0 .6rem; font-family: var(--titre); letter-spacing: .14em; color: var(--blanc-gel); background: var(--rouge); border-radius: 4px; transform: rotate(-2deg); }
+.salon-joueurs { margin: 0; padding: 0; list-style: none; }
+
+.salon-joueurs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espace-1);
+  padding: .2rem .9rem;
+  font-family: var(--manuscrit);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--papier);
+  border: 2px solid var(--encre);
+  border-top-width: 14px;
+  border-top-color: var(--rouge);
+  border-radius: 4px;
+  transform: rotate(-.6deg);
+}
+
+.salon-joueurs li:nth-child(even) { transform: rotate(.7deg); border-top-color: var(--bleu); }
+.regle-texte { display: flex; flex-direction: column; line-height: 1.2; }
+.regle-nom { font-family: var(--manuscrit); font-size: 1.45rem; font-weight: 700; }
+.regle-aide { font-size: .88rem; color: var(--crayon); }
+.salon .button { align-self: flex-start; margin-top: .6rem; }
+#erreur { max-width: 40rem; margin: var(--espace-2) auto; }
+.salon-ou { margin: .6rem 0 .2rem; font-size: 1.35rem; color: var(--encre); }
+.salon-retirer-robot {
+  background: none;
+  border: none;
+  color: var(--rouge);
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 .3rem;
+  line-height: 1;
+}
+.salon-retirer-robot:hover { transform: scale(1.2); }
+.pastille--robot { color: var(--bleu); border-color: var(--bleu); }

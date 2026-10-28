@@ -1,0 +1,80 @@
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: .4rem 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: max(.9rem, env(safe-area-inset-top)) max(1.2rem, env(safe-area-inset-right)) 0 max(1.2rem, env(safe-area-inset-left));
+}
+
+.logo {
+  margin-right: auto;
+  padding: .1rem .9rem .2rem;
+  font-family: var(--titre);
+  font-size: 2.1rem;
+  line-height: 1.1;
+  text-decoration: none;
+  color: var(--encre);
+  background: var(--papier-clair) var(--bruit);
+  box-shadow: var(--ombre-feuille);
+  transform: rotate(-2deg);
+}
+
+.logo b { font-weight: 400; color: var(--rouge); }
+.logo::after { content: '★'; margin-left: .3rem; font-size: 1.1rem; color: var(--jaune); }
+
+.header-tabs, .header-account { display: flex; gap: .5rem; padding-top: .35rem; }
+
+.tab {
+  position: relative;
+  display: inline-block;
+  padding: .1rem 1rem .1rem 1.8rem;
+  font-family: var(--manuscrit);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--encre);
+  background: var(--kraft);
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+  transition: transform .15s ease, background .15s ease;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--ardoise);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .6);
+}
+
+.tab:hover { background: var(--jaune); transform: translateY(2px); }
+.tab[aria-current='page'] { color: var(--blanc-gel); background: var(--rouge); }
+
+.header-tabs .tab:nth-child(odd) { transform: rotate(-1.2deg); }
+.header-tabs .tab:nth-child(even) { transform: rotate(1deg); }
+
+@media (max-width: 40rem) {
+  .header { padding: max(.6rem, env(safe-area-inset-top)) max(.7rem, env(safe-area-inset-right)) 0 max(.7rem, env(safe-area-inset-left)); }
+  .logo { font-size: 1.7rem; }
+  .tab { font-size: 1.3rem; padding-left: 1.6rem; }
+  .header-tabs, .header-account { padding-top: 0; }
+}
+
+@media (max-width: 30rem) {
+  .header { flex-wrap: nowrap; align-items: center; gap: .3rem; }
+  .logo { font-size: 1.35rem; padding-inline: .5rem; }
+  .logo::after { display: none; }
+  .header-tabs, .header-account { gap: .25rem; }
+  .tab { font-size: 1.25rem; padding: .05rem .6rem .05rem 1.3rem; clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%); }
+  .tab::before { left: 7px; width: 6px; height: 6px; margin-top: -3px; }
+}

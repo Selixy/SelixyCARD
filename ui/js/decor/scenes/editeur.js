@@ -1,0 +1,32 @@
+export const editeur = {
+  vise: [0, 0],
+  distance: 18,
+  elevation: 1.05,
+  elements: [
+    ['craie_bleue', 10.5, -4.6, -0.5, 0.03],
+    ['craie_blanche', -10, 6, 0.3, 0.03],
+    ['craie_cassee_jaune', -11, -3.4, 0.7, 0.03],
+    ['eponge', 9.4, 7.4, 0.2, 0.06],
+    ['trace_grille', 11.6, 1.8, 0.1, 0.012],
+    ['trace_etoile', -11.6, 1.4, -0.25, 0.012],
+    ['carte:1:bleu-2-a', 10.2, 4.8, 0.3, 0.14, 0.2],
+    ['trace_etoile', -11.4, -6.6, 0.2, 0.012],
+    ['trace_coeur_bleu', 11.6, -6.8, 0.2, 0.012],
+    ['trace_gribouillis_rose', -11.1, 7.6, -0.1, 0.012],
+    ['trace_etoile_verte', 11.7, 7.4, 0.3, 0.012],
+    ['trace_fleche_jaune', -11.4, 0.6, 0.2, 0.012],
+  ],
+  etroit: {
+    vise: [0, 2],
+    distance: 16,
+    elements: [
+      ['trace_grille', 0, 9.8, 0.05, 0.012, 0, 1.2],
+      ['craie_bleue', -2.6, 8.5, -0.4, 0.03, 0, 1.3],
+      ['carte:1:bleu-2-a', 2.4, 7.5, 0.2, 0.15, 0.05, 1.25],
+      ['craie_blanche', -2.6, 3.6, 0.3, 0.03, 0, 1.3],
+      ['trace_etoile', 0, -3.2, 0.2, 0.012, 0, 1.2],
+      ['craie_cassee_jaune', -2.4, -4.0, 0.7, 0.03, 0, 1.3],
+      ['eponge', 2.4, -4.2, 0.2, 0.06, 0, 1.2],
+    ],
+  },
+};

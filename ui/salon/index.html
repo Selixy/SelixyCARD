@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jouer – SelixyCARD</title>
+  <link rel="preload" href="/images/fonds/fond-salon.webp?v=4" as="image" type="image/webp" fetchpriority="high">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: #1a1e22;
+      background-image: url('/images/fonds/fond-salon.webp?v=4');
+      background-position: center center;
+      background-size: auto 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 700px) {
+      body { background-image: url('/images/fonds/fond-salon-mobile.webp?v=4'); }
+    }
+  </style>
+  <link rel="preload" href="/polices/caveat-brush-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Caveat+Brush&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="../css/atelier/jetons.css">
+  <link rel="stylesheet" href="../css/atelier/transitions.css">
+  <link rel="stylesheet" href="../css/atelier/papier.css">
+  <link rel="stylesheet" href="../css/atelier/formulaires.css">
+  <link rel="stylesheet" href="../css/atelier/entete.css">
+  <link rel="stylesheet" href="../css/atelier/sombre.css">
+  <link rel="stylesheet" href="../css/salon.css">
+  <link rel="preload" href="/wasm/moteur_bg.wasm?v=glow3" as="fetch" type="application/wasm" crossorigin>
+</head>
+<body data-decor="salon">
+  <canvas id="decor" aria-hidden="true"></canvas>
+  <header class="header">
+    <a class="tab" href="/">Accueil</a>
+  </header>
+  <main>
+    <p id="erreur" class="error" role="alert" hidden></p>
+
+    <section id="accueil" class="feuille feuille--ligne pile salon-accueil" aria-labelledby="titre-accueil">
+      <h1 id="titre-accueil">Une partie de <span class="souligne">UNO</span> ?</h1>
+      <div class="field">
+        <label for="pseudo">Ton pseudo</label>
+        <input id="pseudo" maxlength="20" autocomplete="nickname" required>
+      </div>
+      <button id="creer" class="button button--primary" type="button">Créer un salon</button>
+      <p class="hint salon-ou">ou rejoins le salon d'un ami avec son code</p>
+      <div class="field">
+        <label for="code">Code du salon</label>
+        <input id="code" maxlength="5" autocapitalize="characters" autocomplete="off" spellcheck="false">
+      </div>
+      <button id="rejoindre" class="button" type="button">Rejoindre</button>
+    </section>
+
+    <section id="salon" class="salon" aria-labelledby="titre-salon" hidden>
+      <div class="feuille feuille--punaise feuille--sans-ruban pile" style="--incl:-.8deg">
+        <h1 id="titre-salon">Salon <span id="code-salon" class="salon-code"></span></h1>
+        <p class="hint">Donne ce code à tes amis pour qu'ils te rejoignent.</p>
+        <h2 class="salon-titre">Joueurs</h2>
+        <ul id="joueurs" class="pile salon-joueurs"></ul>
+        <button id="ajouter-robot" class="button button--secondaire" type="button" hidden>+ Ajouter un robot</button>
+      </div>
+      <div class="feuille feuille--ligne pile" style="--incl:.7deg">
+        <div class="field">
+          <label for="set">Set de cartes</label>
+          <select id="set"></select>
+        </div>
+        <h2 class="salon-titre">Règles optionnelles</h2>
+        <div id="regles" class="pile"></div>
+        <p id="attente" class="hint" hidden>Seul l'hôte peut changer les règles et lancer la partie.</p>
+        <button id="lancer" class="button button--primary" type="button" disabled>Lancer la partie</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../js/salon/index.js"></script>
+  <script type="module" src="../js/decor/page.js"></script>
+</body>
+</html>

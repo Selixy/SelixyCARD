@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Éditeur de carte · SelixyCARD</title>
+  <link rel="preload" href="/images/fonds/fond-editeur.webp?v=4" as="image" type="image/webp" fetchpriority="high">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: #1a1e22;
+      background-image: url('/images/fonds/fond-editeur.webp?v=4');
+      background-position: center center;
+      background-size: auto 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 700px) {
+      body { background-image: url('/images/fonds/fond-editeur-mobile.webp?v=4'); }
+    }
+  </style>
+  <link rel="preload" href="/polices/caveat-brush-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Caveat+Brush&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="../css/atelier/jetons.css">
+  <link rel="stylesheet" href="../css/atelier/transitions.css">
+  <link rel="stylesheet" href="../css/atelier/papier.css">
+  <link rel="stylesheet" href="../css/atelier/formulaires.css">
+  <link rel="stylesheet" href="../css/atelier/entete.css">
+  <link rel="stylesheet" href="../css/atelier/sombre.css">
+  <link rel="stylesheet" href="../css/cartes.css">
+  <link rel="stylesheet" href="../css/cartes-editeur.css">
+  <link rel="preload" href="/wasm/moteur_bg.wasm?v=glow3" as="fetch" type="application/wasm" crossorigin>
+</head>
+<body data-decor="editeur">
+  <canvas id="decor" aria-hidden="true"></canvas>
+  <header class="header">
+    <a class="tab" href="/">Accueil</a>
+  </header>
+  <main>
+    <div class="rangee editeur-nav">
+      <a class="button button--discret" id="retour" href="index.html">← Le set</a>
+      <a class="button button--discret" id="precedent" href="#" hidden>‹ Précédente</a>
+      <a class="button button--discret" id="suivant" href="#" hidden>Suivante ›</a>
+    </div>
+    <h1 id="titre">Carte</h1>
+    <p class="hint" id="sous-titre"></p>
+    <p class="error" id="erreur" role="alert"></p>
+    <p class="feuille invite-connexion" id="invite-connexion" hidden>Connectez-vous pour accéder à l'éditeur de cartes. <a class="button button--primary" href="/compte/">Se connecter</a></p>
+    <p class="hint" id="lecture-seule" hidden>Ce set appartient à un autre auteur : vous pouvez le regarder, pas le modifier.</p>
+    <div class="editeur">
+      <section class="feuille feuille--droite pile editeur-recadrage" aria-label="Recadrage">
+        <p class="etiquette editeur-titre">1 · Recadrer</p>
+        <div class="zone" id="zone">
+          <canvas id="recadrage" width="640" height="640"></canvas>
+          <label class="zone-invite" for="fichier">
+            <strong>Glissez une image ici</strong>
+            <span>ou touchez pour choisir un fichier</span>
+          </label>
+        </div>
+        <input class="visuellement-cache" type="file" id="fichier" accept="image/*">
+        <div class="field">
+          <label for="zoom">Zoom (molette, pincement ou curseur)</label>
+          <input type="range" id="zoom" min="1" max="8" step="0.01" value="1" disabled>
+        </div>
+        <p class="hint">Faites glisser le cadre pour le déplacer. Il garde le ratio 2:3 de la carte.</p>
+      </section>
+      <section class="pile editeur-droite" aria-label="Aperçu">
+        <div class="apercu feuille feuille--punaise feuille--sans-ruban" style="--incl:1.6deg">
+          <canvas id="apercu" width="320" height="480"></canvas>
+          <p class="etiquette editeur-titre">2 · L'épreuve</p>
+        </div>
+        <div class="feuille feuille--menthe pile" id="bloc-cibles" hidden style="--incl:-.6deg">
+          <div id="cibles"></div>
+          <div class="rangee">
+            <button class="button button--discret" type="button" id="tout-cocher">Tout cocher</button>
+            <button class="button button--discret" type="button" id="tout-decocher">Tout décocher</button>
+          </div>
+        </div>
+        <div class="rangee">
+          <button class="button button--primary" type="button" id="enregistrer" disabled>Enregistrer</button>
+          <button class="button button--discret button--danger" type="button" id="retirer">Retirer l’illustration</button>
+        </div>
+        <p class="hint" id="statut" role="status"></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="../js/editeur/index.js"></script>
+  <script type="module" src="../js/decor/page.js"></script>
+</body>
+</html>

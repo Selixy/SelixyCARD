@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SelixyCARD</title>
+  <link rel="preload" href="/images/fonds/fond-accueil.webp?v=4" as="image" type="image/webp" fetchpriority="high">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: #1a1e22;
+      background-image: url('/images/fonds/fond-accueil.webp?v=4');
+      background-position: center center;
+      background-size: auto 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    @media (max-width: 700px) {
+      body { background-image: url('/images/fonds/fond-accueil-mobile.webp?v=4'); }
+    }
+  </style>
+  <link rel="preload" href="/polices/caveat-brush-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Caveat+Brush&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="css/atelier/jetons.css">
+  <link rel="stylesheet" href="css/atelier/transitions.css">
+  <link rel="stylesheet" href="css/atelier/papier.css">
+  <link rel="stylesheet" href="css/atelier/formulaires.css">
+  <link rel="stylesheet" href="css/atelier/entete.css">
+  <link rel="stylesheet" href="css/atelier/sombre.css">
+  <link rel="stylesheet" href="css/atelier/badge-compte.css">
+  <link rel="stylesheet" href="css/accueil.css">
+  <link rel="preload" href="/wasm/moteur_bg.wasm?v=glow3" as="fetch" type="application/wasm" crossorigin>
+</head>
+<body data-decor="accueil">
+  <canvas id="decor" aria-hidden="true"></canvas>
+  <header class="header">
+    <div class="compte-badge" id="compte-badge">
+      <a class="tab" href="/compte/">Connexion</a>
+      <span class="compte-punaise" aria-hidden="true"></span>
+      <span class="compte-cordon" aria-hidden="true" hidden></span>
+      <span class="compte-medaille" aria-hidden="true" hidden></span>
+    </div>
+  </header>
+  <main class="accueil">
+    <section class="accueil-heros">
+      <p class="etiquette">SelixyCARD</p>
+      <h1>L'atelier <span class="souligne">des cartes</span></h1>
+      <p class="accueil-intro">Dessinez vos 108 cartes, recadrez chaque illustration, rassemblez-les en un set, puis posez-les sur la table avec vos amis.</p>
+    </section>
+    <div class="accueil-entrees">
+      <a class="feuille feuille--punaise feuille--sans-ruban surface--cliquable accueil-entree" style="--incl:-1.4deg" href="/cartes/">
+        <h2>Mes cartes</h2>
+        <p class="hint">Créer un set, importer et recadrer vos illustrations.</p>
+      </a>
+      <a class="feuille feuille--menthe surface--cliquable accueil-entree" style="--incl:.9deg" href="/salon/">
+        <h2>Jouer</h2>
+        <p class="hint">Créer ou rejoindre un salon, régler les règles optionnelles.</p>
+      </a>
+      <div class="feuille feuille--jaune accueil-entree accueil-entree--bientot" style="--incl:-.6deg" aria-disabled="true">
+        <span class="accueil-bientot">bientôt</span>
+        <h2>Amis</h2>
+        <p class="hint">Retrouver vos amis et les inviter à une partie.</p>
+      </div>
+      <div class="feuille feuille--menthe accueil-entree accueil-entree--bientot" style="--incl:1.2deg" aria-disabled="true">
+        <span class="accueil-bientot">bientôt</span>
+        <h2>Communauté</h2>
+        <p class="hint">Parcourir et jouer les sets des autres illustratrices.</p>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="js/decor/page.js"></script>
+  <script type="module" src="js/compte/badge.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Partie — SelixyCARD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Caveat+Brush&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="../css/atelier/jetons.css">
+  <link rel="stylesheet" href="../css/atelier/transitions.css">
+  <link rel="stylesheet" href="../css/atelier/papier.css">
+  <link rel="stylesheet" href="../css/atelier/formulaires.css">
+  <link rel="stylesheet" href="../css/atelier/entete.css">
+  <link rel="stylesheet" href="../css/atelier/sombre.css">
+  <link rel="stylesheet" href="../css/partie.css">
+  <link rel="preload" href="/wasm/moteur_bg.wasm?v=glow3" as="fetch" type="application/wasm" crossorigin>
+</head>
+<body class="partie">
+  <details class="partie-quitter">
+    <summary class="tab">Quitter</summary>
+    <div class="surface partie-quitter-confirmation">
+      <p>Quitter la partie ?</p>
+      <a class="button button--primary" href="/salon/">Oui, quitter</a>
+    </div>
+  </details>
+  <canvas id="scene" aria-label="Table de jeu"></canvas>
+  <div class="partie-hud">
+    <div id="bandeau" class="partie-bandeau" role="status"></div>
+    <ul id="joueurs" class="partie-joueurs" aria-label="Adversaires"></ul>
+    <p id="message" class="partie-message" role="alert" hidden></p>
+    <div class="partie-actions">
+      <button id="btn-contester" class="button button--danger" type="button" hidden>Contester le +4</button>
+      <button id="btn-uno" class="button button--primary partie-uno-bouton" type="button" hidden>UNO !</button>
+    </div>
+  </div>
+  <div class="partie-choix-pioche">
+    <button id="btn-jouer-piochee" class="button button--primary" type="button" hidden>Jouer cette carte</button>
+    <button id="btn-garder" class="button" type="button" hidden>La garder</button>
+  </div>
+  <div id="selecteur" class="partie-voile" hidden></div>
+  <div id="fin" class="partie-voile" hidden></div>
+  <div id="sans-partie" class="partie-voile" hidden>
+    <div class="surface partie-selecteur">
+      <h2 class="partie-selecteur-titre">Aucune partie en cours</h2>
+      <p>Crée un salon ou rejoins celui d'un ami avec son code : la table s'ouvrira ici.</p>
+      <a class="button button--primary" href="/salon/">Aller au salon</a>
+    </div>
+  </div>
+  <script type="module" src="../js/partie/principal.js"></script>
+</body>
+</html>

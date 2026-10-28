@@ -1,0 +1,17 @@
+[package]
+name = "moteur"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3.100", features = [
+  "HtmlCanvasElement",
+  "ImageBitmap",
+] }
+wgpu = { version = "24", features = ["webgl"] }

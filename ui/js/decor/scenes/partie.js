@@ -1,0 +1,31 @@
+export const partie = {
+  vise: [0, 0],
+  distance: 15,
+  elevation: 1.1,
+  elements: [
+    ['cadre', 0, 9.5, 0.01, 0.02],
+    ['craie_blanche', 10.5, 8, 0.3, 0.03],
+    ['craie_rose', -12.5, 7, -0.2, 0.03],
+    ['eponge', 12.5, -4.5, -0.2, 0.06],
+    ['trace_uno', -11.4, -2, 0.1, 0.012],
+    ['trace_etoile', 11.4, 2.6, 0.2, 0.012],
+    ['trace_etoile_bleue', -11.8, 4.5, 0.3, 0.012],
+    ['trace_coeur_jaune', 12.0, -6.5, 0.2, 0.012],
+    ['trace_gribouillis_rose', -11.3, -7, 0.1, 0.012],
+    ['trace_fleche_jaune', 11.1, 6.8, 2.8, 0.012],
+    ['trace_plus4', -12.3, -4.5, -0.2, 0.012],
+    ['trace_etoile_verte', 12.5, -1.5, 0.4, 0.012],
+    ['trace_coeur_bleu', -9, -8.6, -0.3, 0.012],
+  ],
+  etroit: {
+    vise: [0, 1],
+    distance: 16,
+    elements: [
+      ['trace_uno', 0, 9.8, 0.1, 0.012, 0, 1.3],
+      ['craie_rose', -2.8, 8.5, -0.2, 0.03, 0, 1.3],
+      ['craie_blanche', 2.8, 8.5, 0.3, 0.03, 0, 1.3],
+      ['trace_coeur_bleu', -2.6, -4.2, 0.2, 0.012, 0, 1.2],
+      ['eponge', 2.6, -4.5, -0.2, 0.06, 0, 1.2],
+    ],
+  },
+};

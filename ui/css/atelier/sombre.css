@@ -1,0 +1,98 @@
+.surface, .card, .feuille {
+  background-color: var(--papier-clair);
+  outline: 1.5px dashed rgba(217, 182, 108, .38);
+  outline-offset: -8px;
+}
+
+.surface::before, .card::before, .feuille::before {
+  background: repeating-linear-gradient(115deg, rgba(232, 120, 150, .92) 0 9px, rgba(255, 236, 240, .55) 9 12px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .6);
+}
+
+.feuille--menthe::before { background: repeating-linear-gradient(115deg, rgba(70, 190, 160, .92) 0 9px, rgba(230, 255, 245, .5) 9 12px); }
+.feuille--jaune::before { background: repeating-linear-gradient(115deg, rgba(240, 190, 50, .94) 0 9px, rgba(255, 246, 210, .55) 9 12px); }
+.feuille--punaise::after { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #e4a93a 12% 70%, #7a5412 100%); box-shadow: 3px 5px 5px rgba(0, 0, 0, .65); }
+.surface--cliquable:hover { box-shadow: 0 2px 2px rgba(0, 0, 0, .5), 0 16px 26px -8px rgba(0, 0, 0, .85), 0 0 22px -6px rgba(217, 182, 108, .35); }
+
+.logo {
+  color: var(--or);
+  text-shadow: 0 1px 0 #6b531f, 0 0 12px rgba(217, 182, 108, .35);
+  background-color: #1c1a18;
+  outline: 1.5px solid rgba(217, 182, 108, .55);
+  outline-offset: -4px;
+}
+
+.logo b { color: #ff7a5c; }
+.logo::after { color: var(--or); }
+
+.etiquette, .tab { color: var(--blanc-gel); background: linear-gradient(var(--kraft), #6a4e31); text-shadow: 0 1px 1px rgba(0, 0, 0, .5); }
+.tab:hover { color: #1d2125; background: var(--or); text-shadow: none; }
+.tab[aria-current='page'] { background: var(--rouge); }
+.pastille { color: var(--or); background: rgba(217, 182, 108, .16); outline: 1px solid rgba(217, 182, 108, .5); }
+.souligne { background: linear-gradient(transparent 62%, rgba(217, 182, 108, .4) 62% 90%, transparent 90%); }
+h1, h2 { color: var(--blanc-gel); }
+:is(.surface, .card, .feuille) :is(h1, h2, h3) { color: var(--or); text-shadow: 0 1px 0 rgba(0, 0, 0, .5); }
+
+.button { color: var(--blanc-gel); background: #25221f; border-color: var(--or); box-shadow: 3px 4px 0 #000; }
+.button:hover { box-shadow: 4px 6px 0 #000, 0 0 16px -2px rgba(217, 182, 108, .45); }
+.button--primary { background: var(--rouge); border-color: #ffb199; }
+.button--danger { color: var(--alerte); }
+.button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline-color: var(--or); }
+
+.field input, .field select, .field textarea { background: rgba(0, 0, 0, .35); border-bottom-color: var(--or); }
+.field input:focus, .field select:focus { background: rgba(217, 182, 108, .14); }
+.interrupteur { border-bottom-color: rgba(217, 182, 108, .3); }
+.interrupteur input { background: rgba(0, 0, 0, .35); border-color: var(--or); }
+.interrupteur input::after { border-color: #ff8a6c; }
+
+.vignette { background-color: #e9e0cc; outline: 0; box-shadow: var(--ombre-feuille), 0 0 0 1px rgba(0, 0, 0, .4); }
+.vignette:hover { box-shadow: 0 16px 24px -6px #000, 0 0 20px -2px rgba(217, 182, 108, .4); }
+.set-carte { background-color: #6f5236; }
+.set-carte::before { background: #1c1a18; outline: 0; }
+.set-carte .set-nom { color: var(--blanc-gel); }
+.set-carte .hint { color: #e6d7b8; }
+.salon-joueurs li { background: #272422; border-color: rgba(217, 182, 108, .6); }
+main .zone { background: rgba(0, 0, 0, .25); border-color: var(--or); }
+main .zone--survol { background: rgba(217, 182, 108, .16); }
+.partie-voile { background: rgba(10, 12, 14, .78); }
+
+.accueil-heros {
+  padding: 1.2rem 1.6rem 1.4rem;
+  background: rgba(30, 24, 19, .88) var(--bruit);
+  outline: 1.5px dashed rgba(217, 182, 108, .4);
+  outline-offset: -8px;
+  box-shadow: var(--ombre-feuille);
+  transform: rotate(-.6deg);
+}
+
+.accueil-numero { color: var(--or); text-shadow: 0 2px 3px #000; }
+.hint { color: #eadcc2; text-shadow: 0 1px 2px #000; }
+main > .hint, main > .error, main > h1 + .hint {
+  display: inline-block;
+  padding: .1rem .8rem;
+  background: rgba(30, 24, 19, .82);
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .5);
+}
+
+main > h1 { display: inline-block; padding: 0 .7rem; background: rgba(30, 24, 19, .82); transform: rotate(-.8deg); box-shadow: 0 3px 8px rgba(0, 0, 0, .5); }
+main .zone { background: rgba(20, 16, 12, .55); }
+.zone-invite { color: #eadcc2; }
+.zone-invite strong { color: var(--or); }
+.salon-code, .pastille { outline: 2px double rgba(255, 190, 170, .75); outline-offset: 2px; letter-spacing: .12em; }
+.salon-code { background: transparent; color: #ff8a6c; border: 2px solid #ff8a6c; text-transform: uppercase; }
+.accueil-heros::after {
+  content: 'fait main';
+  position: absolute;
+  right: 1rem;
+  bottom: .6rem;
+  padding: 0 .6rem;
+  font-family: var(--titre);
+  font-size: 1.1rem;
+  color: rgba(255, 138, 108, .85);
+  border: 2px solid rgba(255, 138, 108, .75);
+  border-radius: 6px;
+  transform: rotate(-7deg);
+  opacity: .8;
+}
+.accueil-heros { position: relative; }
